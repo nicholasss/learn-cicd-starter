@@ -18,7 +18,7 @@ func TestNormalGetAPIKey(t *testing.T) {
 			input: http.Header{
 				"Authorization": []string{"ApiKey token123"},
 			},
-			expecting: "failing token123",
+			expecting: "token123",
 		},
 		{
 			input: http.Header{
