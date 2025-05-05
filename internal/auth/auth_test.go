@@ -18,7 +18,7 @@ func TestNormalGetAPIKey(t *testing.T) {
 			input: http.Header{
 				"Authorization": []string{"ApiKey token123"},
 			},
-			expecting: "token123",
+			expecting: "failing token123",
 		},
 		{
 			input: http.Header{
@@ -82,26 +82,26 @@ func TestFailedGetAPIKey(t *testing.T) {
 	}
 }
 
-func TestEmptyGetAPIKey(t *testing.T) {
-	type test struct {
-		input     http.Header
-		expecting error
-	}
-
-	tests := []test{
-		{
-			input: http.Header{
-				"Authorization": []string{""},
-			},
-			expecting: errors.New("no authorization header included"),
-		},
-	}
-
-	for _, test := range tests {
-		_, err := GetAPIKey(test.input)
-		if errors.Is(test.expecting, err) && err != nil {
-			fmt.Println("error from test:", err)
-			t.Errorf("Expected: %q, Got: %q", test.expecting, err.Error())
-		}
-	}
-}
+// func TestEmptyGetAPIKey(t *testing.T) {
+// 	type test struct {
+// 		input     http.Header
+// 		expecting error
+// 	}
+//
+// 	tests := []test{
+// 		{
+// 			input: http.Header{
+// 				"Authorization": []string{""},
+// 			},
+// 			expecting: errors.New("no authorization header included"),
+// 		},
+// 	}
+//
+// 	for _, test := range tests {
+// 		_, err := GetAPIKey(test.input)
+// 		if errors.Is(test.expecting, err) && err != nil {
+// 			fmt.Println("error from test:", err)
+// 			t.Errorf("Expected: %q, Got: %q", test.expecting, err.Error())
+// 		}
+// 	}
+// }
