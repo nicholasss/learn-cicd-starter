@@ -21,7 +21,7 @@ jobs:
       - name: Check Out Code
         uses: actions/checkout@v4
 
-      - name: Install Goose
+      - name: Install Goose tool
         uses: go install github.com/pressly/goose/v3/cmd/goose@latest
 
       - name: Build App
